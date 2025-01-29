@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Inauguration Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?luxury,dining') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            transition: background 1s ease-in-out;
+        }
+        .menu-container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #b35d16;
+        }
+        .menu {
+            text-align: left;
+            font-size: 18px;
+            color: #333;
+        }
+        .date {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d35400;
+            margin-top: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>Home Inauguration Menu</h1>
+        <div class="menu" id="menu"></div>
+    </div>
+    
+    <script>
+        const menuData = [
+            { date: "29th", meals: { "Breakfast": "Upma", "Lunch": "Paratha + Stuffed Eggplant + Dal", "Dinner": "Dum Aloo + Roti" } },
+            { date: "30th", meals: { "Breakfast": "Poha + Jalebi + Samosa (Sehore) + Tea", "Lunch": "Sabzi Raita + Jeera Rice + Green Chickpea Curry + Roti", "Dinner": "Toor Dal + Rice + Cauliflower Potato Peas + Green Chutney + Roti", "Sweets": "Rabdi + Gulab Jamun" } },
+            { date: "31st", meals: { "Breakfast": "Mangode + Bread", "Lunch": "Dal Bafla + Rava Laddoo", "Dinner": "Tehri" } },
+            { date: "1st", meals: { "Breakfast": "Fried Idli + Chutney", "Lunch": "Kadhi + Roti + Rice + Potato Curry", "Dinner": "Tomato Potato Curry + Turmeric Cumin Rice + Methi Paratha", "Sweets": "Balushahi" } }
+        ];
+        
+        const menuContainer = document.getElementById("menu");
+        
+        menuData.forEach(day => {
+            let menuHTML = `<div class="date">${day.date} Date</div><ul>`;
+            Object.keys(day.meals).forEach(meal => {
+                menuHTML += `<li><strong>${meal}:</strong> ${day.meals[meal]}</li>`;
+            });
+            menuHTML += "</ul>";
+            menuContainer.innerHTML += menuHTML;
+        });
+        
+        // Array of background images
+        const backgrounds = [
+            'https://source.unsplash.com/1600x900/?luxury,dining',
+            'https://source.unsplash.com/1600x900/?food,restaurant',
+            'https://source.unsplash.com/1600x900/?celebration,party',
+            'https://source.unsplash.com/1600x900/?gourmet,cuisine'
+        ];
+        
+        let bgIndex = 0;
+        function changeBackground() {
+            bgIndex = (bgIndex + 1) % backgrounds.length;
+            document.body.style.backgroundImage = `url('${backgrounds[bgIndex]}')`;
+        }
+        
+        setInterval(changeBackground, 5000); // Change background every 5 seconds
+    </script>
+</body>
+</html>
