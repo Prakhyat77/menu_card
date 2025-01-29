@@ -66,7 +66,7 @@
         const menuContainer = document.getElementById("menu");
         
         menuData.forEach(day => {
-            let menuHTML = `<div class="date">${day.date} Date</div><ul>`;
+            let menuHTML = `<div class="date">${day.date} </div><ul>`;
             Object.keys(day.meals).forEach(meal => {
                 menuHTML += `<li><strong>${meal}:</strong> ${day.meals[meal]}</li>`;
             });
